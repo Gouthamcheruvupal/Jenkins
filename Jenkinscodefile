@@ -8,15 +8,5 @@ pipeline {
         sh 'node --version'
       }
     }
-   stage('Deploy') {
-      steps {
-        sh 'kubectl apply -f deployment.yml'
-      }
-    }
-  stage('Test') {
-      steps {
-        sh 'node --version'
-      }
-    }
   }
 }
