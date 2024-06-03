@@ -1,42 +1,12 @@
 pipeline {
-    agent {
-            docker { image 'node:18-alpine' }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/your-username/your-repo.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'echo "Building the project..."'
-                // Add your build commands here, e.g., 'mvn clean install' for Maven
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'echo "Running tests..."'
-                // Add your test commands here, e.g., 'mvn test' for Maven
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'echo "Deploying the project..."'
-                // Add your deployment steps here
-            }
-        }
+  agent {
+    docker { image 'node:17-alpine' }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh 'node --version'
+      }
     }
-
-    post {
-        success {
-            echo 'Build succeeded!'
-        }
-        failure {
-            echo 'Build failed!'
-        }
-    }
+  }
 }
